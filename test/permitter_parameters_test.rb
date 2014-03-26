@@ -7,13 +7,13 @@ end
 class WidgetsController < InheritedResources::Base
 end
 
-class StrongParametersTest < ActionController::TestCase
+class PermittedParametersTest < ActionController::TestCase
   def setup
     @controller = WidgetsController.new
     @controller.stubs(:widget_url).returns("/")
-    @controller.stubs(:strong_params).returns(:permitted => 'param')
+    @controller.stubs(:permitted_params).returns(:widget => {:permitted => 'param'})
     class << @controller
-      private :strong_params
+      private :permitted_params
     end
   end
 
